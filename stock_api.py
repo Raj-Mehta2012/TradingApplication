@@ -41,7 +41,7 @@ def get_stock_data(ticker, duration):
         stock_data = pdr.get_data_yahoo(ticker, start=start_date, end=end_date)
 
         # Define S3 path, ensuring the extension is .csv
-        s3_path = f"{ticker}_{duration}/{ticker}_data.csv"
+        s3_path = "RAW_DATA/" + f"{ticker}_{duration}/{ticker}_data.csv"
         
         # Upload the DataFrame to S3 in CSV format
         upload_to_s3(stock_data, "yfinstockdata", s3_path)
